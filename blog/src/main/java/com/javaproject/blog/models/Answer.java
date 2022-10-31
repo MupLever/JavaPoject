@@ -12,7 +12,11 @@ public class Answer {
     private long answer_user_id;
     private long answer_question_id;
     private String title, text;
-
+    public Answer() {}
+    public Answer(String title, String text) {
+        this.title = title;
+        this.text = text;
+    }
     final public String GeTitleAnswer() { return this.title; }
     final public String GetTextAnswer() { return this.text; }
     

@@ -1,4 +1,4 @@
-package com.javaproject.repo;
+package com.javaproject.blog.repo;
 import org.springframework.data.repository.CrudRepository;
 
 import com.javaproject.blog.models.Answer;
