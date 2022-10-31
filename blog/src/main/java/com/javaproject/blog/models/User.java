@@ -10,11 +10,14 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long user_id;
+
     private String username;
-
-
     private String email;
-    private char[] password;
+    public User() {}
+    public User(final String email, final String username) {
+        this.username = username;
+        this.email = email;
+    }
 
     final public String GetUsername() { return this.username; }
     final public String GetEmail()    { return this.email;    }

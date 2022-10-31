@@ -1,7 +1,8 @@
 package com.javaproject.blog.controllers;
+
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.javaproject.blog.models.Answer;
@@ -14,9 +15,9 @@ public class AnswerController {
     private AnswerRepository answerRepository;
 
     @GetMapping("/answers")
-	public String session(Model model) {
+	public String session(Map<String, Object> model) {
 		Iterable<Answer> answers = answerRepository.findAll();
-		model.addAttribute("answers", answers);
+		model.put("answers", answers);
 		return "session";
 	}
 }

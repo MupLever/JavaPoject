@@ -11,7 +11,12 @@ public class Question {
     private long question_id;
     private long question_user_id;
     private String title, text;
+    public Question() {}
 
+    public Question(String title, String text) {
+        this.title = title;
+        this.text = text;
+    }
     final public String GeTitleQuestion() { return this.title; }
     final public String GetTextQuestion() { return this.text;  }
     
