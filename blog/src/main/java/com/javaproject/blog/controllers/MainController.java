@@ -13,12 +13,14 @@ import com.javaproject.blog.repo.QuestionRepository;
 public class MainController {
 	@Autowired
     private QuestionRepository questionRepository;
-
 	@GetMapping("/")
 	public String home(Map<String, Object> model) {
-		Iterable<Question> questions = questionRepository.findAll();
-		model.put("questions", questions);
 		return "home";
 	}
-
+	@GetMapping("/main")
+	public String main(Map<String, Object> model) {
+		Iterable<Question> questions = questionRepository.findAll();
+		model.put("questions", questions);
+		return "main";
+	}
 }

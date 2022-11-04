@@ -14,8 +14,8 @@ public class QuestionController {
     @Autowired
     private QuestionRepository questionRepository;
 
-    @GetMapping("/questions")
-	public String session(Map<String, Object> model) {
+    @GetMapping("/show_questions")
+	public String main(Map<String, Object> model) {
 		Iterable<Question> questions = questionRepository.findAll();
 		model.put("questions", questions);
 		return "show_questions";

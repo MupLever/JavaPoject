@@ -23,7 +23,7 @@
         </form>
 
         <div class="text-end">
-            <a class="p-2 text-white" href="/session">Log in</a>
+            <a class="p-2 text-white" href="/login">Log in</a>
             <a class="p-2 text-white" href="/registration">Sign up</a>
         </div>
         </div>
@@ -46,6 +46,7 @@
                         <textarea required="required" minlegth="4" placeholder="What are you doing?" class="form-control" name="text" id="question_body"></textarea>
                     </div>
                 </div>
+                <input type="hidden" name="_csrf" vlaue="{{_csrf.token}}"/>
                 <input type="submit" name="commit" value="Задать" class="btn btn-success" data-disable-with="Задать" />
             </form>
         </div>
