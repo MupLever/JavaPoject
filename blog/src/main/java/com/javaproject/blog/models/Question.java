@@ -25,6 +25,11 @@ public class Question {
         this.text = text;
         this.author = user;
     }
+
+    public String getAuthorName() {
+        return author != null ? author.getUsername() : "<none>";
+    }
+    
     public String GeTitleQuestion() { return this.title;   }
     public String GetTextQuestion() { return this.text;    }
     public User getAuthorQuestion() { return this.author;  }

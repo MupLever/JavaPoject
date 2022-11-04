@@ -1,6 +1,7 @@
 package com.javaproject.blog.models;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,9 +14,11 @@ public class Answer {
     private long answer_id;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
     private User author;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "question_id")
     private Question question;
 
     private String title, text;
@@ -26,11 +29,13 @@ public class Answer {
         this.question = question;
         this.author = user;
     }
-    public String GetTitleAnswer() { return this.title; }
-    public String GetTextAnswer() { return this.text;  }
-    // public String GetAuthorAnswer() { return this.author; }
-    // public String GetQuestionOfAnswer() { return this.question; }
+    public String GetTitleAnswer()        { return this.title;    }
+    public String GetTextAnswer()         { return this.text;     }
+    public User GetAuthorAnswer()         { return this.author;   }
+    public Question GetQuestionOfAnswer() { return this.question; }
     
-    public void SetTitleAnswer(final String title) { this.title = title; }
-    public void SetTextAnswer(final String text)   { this.text = text;   }
+    public void SetTitleAnswer(String title)           { this.title = title;       }
+    public void SetTextAnswer(String text)             { this.text = text;         }
+    public void SetAuthorAnswer( User user)            { this.author = user;       }
+    public void SetQuestionOfAnswer(Question question) { this.question = question; }
 }
