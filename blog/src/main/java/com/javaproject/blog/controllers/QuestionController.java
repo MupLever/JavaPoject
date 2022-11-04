@@ -16,16 +16,14 @@ public class QuestionController {
     @Autowired
     private QuestionRepository questionRepository;
 
-    @GetMapping("/show_questions")
+    @GetMapping("/show_question")
 	public String main(Map<String, Object> model) {
 		Iterable<Question> questions = questionRepository.findAll();
 		model.put("questions", questions);
-		return "show_questions";
+		return "show_question";
 	}
 	@GetMapping("/new_question")
 	public String NewQuestion(Map<String, Object> model) {
-		Iterable<Question> questions = questionRepository.findAll();
-		model.put("questions", questions);
 		return "new_question";
 	}
 
@@ -33,8 +31,6 @@ public class QuestionController {
 	public String addNewQuestion(@AuthenticationPrincipal User user, @RequestParam String title, @RequestParam String text, Map<String, Object> model) {
 		Question question = new Question(title, text, user);
 		questionRepository.save(question);
-		Iterable<Question> questions = questionRepository.findAll();
-		model.put("questions", questions);
-		return "main";
+		return "redirect:/main";
 	}
 }

@@ -1,10 +1,57 @@
-<!DOCTYPE html>
-<html lang="ru">
-    <head>
-        <title>Spring Security Example</title>
-    </head>
-    <body>
-        <h1>Welcome!</h1>
-        <p>Click <a href="/main">here</a> to see a greeting.</p>
-    </body>
+<!DOCTYPE HTML>
+<html>
+<head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header class="p-3 text-bg-dark">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+      </a>
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="/" class="nav-link px-2 text-secondary">Домой</a></li>
+          <li><a href="/main" class="nav-link px-2 text-white">Ваши вопросы</a></li>
+          <li><a href="/new_question" class="nav-link px-2 text-white">Задать вопрос</a></li>
+      </ul>
+
+      <div class="text-end">
+        <form action="/logout" method="post">
+            <input class="p-2 text-white" type="hidden" name="_csrf" value="{{_csrf.token}}" />
+            <input type="submit" value="Sign Out"/>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container mt-3">
+    <h1>Вопросы</h1>
+    {{#questions}}
+    <article class="card">
+        <div class="card-header bg-dark text-warning">
+        <h3>Автор: {{authorName}}</h3>
+        <hr/>
+        </div>
+            <div class="card-body bg-dark text-white">
+            <h2>{{title}}</h2>
+            <hr/>
+            <pre>{{text}}</pre>
+            <hr/>
+            <div class="my-3">
+                <time datetime="2021-12-21 17:14:40">
+                    Дата создания:&nbsp;&nbsp;2021-12-21 17:14:40
+                </time>
+            </div>
+        <a class="btn btn-primary" href="/questions">Открыть в новом окне</a>
+        </div>
+    </article>
+    {{/questions}}
+    <hr/>
+</main>
+</body>
 </html>

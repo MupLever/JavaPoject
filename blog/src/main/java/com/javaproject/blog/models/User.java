@@ -37,6 +37,7 @@ public class User implements UserDetails {
     public String getUsername() { return this.username; }
     public String getPassword() { return password;      }
     public Set<Role> getRoles() { return roles;         }
+    public Long getUserId()         { return user_id;       }
 
     public void setUsername(final String username) { this.username = username; }
     public void setPassword(String password)       { this.password = password; }
