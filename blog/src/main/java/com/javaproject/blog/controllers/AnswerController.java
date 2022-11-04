@@ -14,10 +14,10 @@ public class AnswerController {
     @Autowired
     private AnswerRepository answerRepository;
 
-    @GetMapping("/answers")
-	public String session(Map<String, Object> model) {
+    @GetMapping("/question")
+	public String answers(Map<String, Object> model) {
 		Iterable<Answer> answers = answerRepository.findAll();
 		model.put("answers", answers);
-		return "session";
+		return "show_questions";
 	}
 }
