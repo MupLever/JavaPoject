@@ -2,7 +2,9 @@ package com.javaproject.blog.controllers;
 import java.util.Map;
 import com.javaproject.blog.repo.QuestionRepository;
 import com.javaproject.blog.models.Question;
+import com.javaproject.blog.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,11 +30,11 @@ public class QuestionController {
 	}
 
 	@PostMapping("/new_question")
-	public String addNewQuestion(@RequestParam String title, @RequestParam String text, Map<String, Object> model) {
-		Question question = new Question(title, text);
+	public String addNewQuestion(@AuthenticationPrincipal User user, @RequestParam String title, @RequestParam String text, Map<String, Object> model) {
+		Question question = new Question(title, text, user);
 		questionRepository.save(question);
 		Iterable<Question> questions = questionRepository.findAll();
 		model.put("questions", questions);
-		return "show_questions";
+		return "main";
 	}
 }
